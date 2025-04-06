@@ -1,0 +1,85 @@
+
+package mphcode;
+import java.time.Duration;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class MPHCode {
+
+   
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("===============================================");
+        System.out.println("MOTOR PH");
+        System.out.println("===============================================");
+        System.out.println("EMPLOYEE INFORMATION PRESS 1");
+    //  System.out.println("EMPLOYEE INFO WITH PAYROLL PRESS 2");
+        System.out.println("===============================================");
+        System.out.print("Please choose number: ");
+        // takes input from the keyboard
+        String option = input.nextLine();
+        // prints the option
+        // System.out.println("You entered option number: " + option);
+        //Option(option);
+        // closes the scanner
+        input.close();
+    
+        //Goal - when 1 is press all info should show
+ 
+        //EmployeeInformation EI = new EmployeeInformation; Parent
+        EmployeeInformation ei = new EmployeeInformation ();
+        //EmployeeInfowithPayroll EP = new EmployeeInfowithPayroll; Toddler 
+        EmployeeInfowithPayroll eip = new EmployeeInfowithPayroll ();
+        
+        //Enter all information of employee labeled in Parent ei EmployeeInformation
+        ei.EmployeeNumber = 10002;
+        ei.LastName = "Lim";
+        ei.FirstName = "Antonio";
+        ei.Birthday = "June 16, 1998";
+        ei.Address = "San Antonio De Padua 2, Block 1 Lot 8 and 2, Dasmarinas, Cavite";
+        ei.PhoneNumber = "171-867-411";
+        ei.SSSNumber ="52-2061274-9";
+        ei.PhilHealthNumber = "331735646338";
+        ei.TINNumber = "683-102-776-000";
+        ei.PagIbigNumber = "663904995411";
+        ei.Status = "Regular";
+        ei.Position = "Position";
+        ei.ImmediateSupervisor = "Manuel Garcia III";
+        ei.RiceSubsidy = "1500";
+        ei.PhoneAllowance = "2000";
+        ei.ClothingAllowance = "1000";
+        ei.TotalAllowance = "4,500";
+        ei.BasicSalaryMonthly = "60,000";
+        ei.BasicSalarySemiMonthlyRate = "30,000";
+        ei.HourlyRate = "357.14";
+        ei.TotalWorkHours= "  ";
+        ei.TotalHoursDecimal= "  ";
+        ei.OvertimeHours = "  ";
+        ei.GrossPay = ""; //need to add the computation, grab the hours login and out
+        ei.PagIbig = "100.00";
+        ei.PhilHealth = "200.00";
+        ei.SSS = "250.00";
+        ei.Tax = " ";
+        ei.TotalDeduction = "550.00";
+     // ei.Deductions = " "; there is no need
+        ei.NetPay = " "; //add here the total netpay
+                
+                 
+     
+        ei.checkStatus();
+     // eip.checkStatus(); - there is no need
+        
+  
+        
+       
+        
+       
+       
+        
+        
+    }
+    
+}
