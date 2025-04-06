@@ -1,0 +1,19 @@
+package mphcode;
+
+
+
+
+public class EmployeeInfowithPayroll extends EmployeeInformation {
+
+    public static void main(String[] args) {
+        
+     
+    
+    
+    
+    }
+    
+ 
+    
+    
+}
