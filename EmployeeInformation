@@ -1,0 +1,183 @@
+package mphcode;
+
+import java.util.Scanner;
+
+import java.time.Duration;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+
+
+public class EmployeeInformation {
+        
+        Scanner input = new Scanner(System.in); 
+           
+    
+        int EmployeeNumber;
+        String LastName ;       
+        String FirstName;
+        String Birthday;
+        String Address;
+        String PhoneNumber;
+        String SSSNumber;
+        String PhilHealthNumber;
+        String TINNumber;
+        String PagIbigNumber;
+        String Status;
+        String Position;
+        String ImmediateSupervisor;        
+        String RiceSubsidy; 
+        String PhoneAllowance;
+        String ClothingAllowance;
+        String TotalAllowance;
+        String BasicSalaryMonthly;
+        String BasicSalarySemiMonthlyRate;
+        String HourlyRate;
+        String TotalWorkHours;
+        String TotalHoursDecimal;
+        String OvertimeHours;      
+        String GrossPay;
+        String PagIbig; 
+        String PhilHealth;
+        String SSS;
+        String Tax;
+        String TotalDeduction;
+        String NetPay;
+        double TaxDeduction;
+        String Deductions;
+        
+        
+        
+      
+
+
+
+        
+         void checkStatus(){
+        System.out.println("EmployeeNumber:" + EmployeeNumber);
+        System.out.println("LastName:" + LastName);
+        System.out.println("FirstName:" + FirstName);
+        System.out.println("Birthday:" + Birthday);
+        System.out.println("Address:" + Address);
+        System.out.println("PhoneNumber:" + PhoneNumber);
+        System.out.println("SSSNumber:" + SSSNumber);
+        System.out.println("PhilHealthNumber:" + PhilHealthNumber);
+        System.out.println("TINNumber:" + TINNumber);
+        System.out.println("PagIbigNumber:" + PagIbigNumber);
+        System.out.println("Status:" + Status);
+        System.out.println("Position:" + Position);
+        System.out.println("ImmediateSupervisor:" + ImmediateSupervisor);
+        System.out.println ("===============================================");
+        
+        
+        
+        System.out.println("RiceSubsidy:" + RiceSubsidy);
+        System.out.println("PhoneAllowance:" + PhoneAllowance);
+        System.out.println("ClothingAllowance:" + ClothingAllowance);
+        
+        
+        
+        
+        //Formula to add all allowance show up to TotalAllowance
+        System.out.println("TotalAllowance:" + TotalAllowance);
+        System.out.println ("===============================================");
+        System.out.println("BasicSalaryMonthly:" + BasicSalaryMonthly);
+        System.out.println("BasicSalarySemiMonthlyRate:" + BasicSalarySemiMonthlyRate);
+        
+        
+        
+        //get the HourlyRate * TotalHoursWorked = Grosspay (overtime * check rate if 1.5% = add to grosspay)
+        System.out.println("HourlyRate:" + HourlyRate);
+        
+               
+        // Calculate TotalHoursWorked 
+         // Define the time format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        // Start and end times given time for login and out
+        LocalTime startTime = LocalTime.parse("10:35", formatter);
+        LocalTime endTime = LocalTime.parse("19:44", formatter);
+
+        // Calculate the duration
+        Duration duration = Duration.between(startTime, endTime);
+
+        // get hours and minutes
+        long hours = duration.toHours();
+        long minutes = duration.toMinutes() % 60;
+
+        // Decimal conversion for payroll calculation
+        double TotalHoursDecimal = hours + (minutes / 60.0);
+
+        // Overtime calculation (assuming 8-hour standard workday)
+        double RegularHours = Math.min(TotalHoursDecimal, 8);
+        double OvertimeHours = Math.max(TotalHoursDecimal - 8, 0);
+        
+        // calculate grosspay
+        double HourlyRate = 357.14; // Antonio's Rate
+        double OvertimeRate = HourlyRate * 1.5;
+        double GrossPay = (RegularHours * HourlyRate) + (OvertimeHours * OvertimeRate);
+        double TotalDeduction = 550.0; // Example total deduction
+        //double TaxDeduction //= grossPay * 0.12; // Example tax deduction (12%)
+        
+
+     
+
+        //do not forget overtime
+        //do not forget decimal
+        //do not forget hours to convert to total every 15mins
+        System.out.println("TotalWorkHours: " + hours + " hours and " + minutes + " minutes");
+        System.out.printf("TotalHoursDecimal: %.2f hours\n", TotalHoursDecimal);
+        System.out.printf("OvertimeHours: %.2f hours\n", OvertimeHours);
+        System.out.printf("GrossPay: $%.2f\n", GrossPay);
+        System.out.println ("===============================================");
+           
+        
+        //to do
+        //get the grosspay by TotalHoursWorked * HourRate
+        //get the grosspay including if there is any overtime  
+        System.out.println("PagIbig:" + PagIbig );
+        System.out.println("PhilHealth:" + PhilHealth );
+        System.out.println("SSS:" + SSS );
+        System.out.printf("TotalDeduction: 550.00", TotalDeduction);
+        System.out.println ();
+        System.out.println ("===============================================");
+        
+        //can do formula for netpay + allowance at end of this line
+        double NetPay = GrossPay - (TotalDeduction + TaxDeduction);
+        System.out.printf("NetPay:%.2f ", NetPay );
+        System.out.println ();
+        System.out.println ("===============================================");
+        
+         
+        
+        
+        
+        /*tax computation starts here-do not delete reference
+          System.out.println("Tax:" + Tax );
+          int salary;
+          double tax;
+          System.out.println("Enter Amount of GrossPay");
+          Scanner r = new Scanner(System.in);
+          GrossPay=r.nextInt();*/
+          
+      if(GrossPay<10000){
+            System.out.println("No Tax");
+            }
+            else if (GrossPay>10000&&GrossPay<=10000) 
+            {  
+            
+                TaxDeduction = GrossPay * 0.25;
+                System.out.println("TaxDeduction:" + TaxDeduction);
+            }
+            else 
+            {
+                 TaxDeduction = GrossPay * 0.35;
+                 System.out.println("TaxDeduction:" + TaxDeduction);          
+        //tax computation ends here
+        
+        System.out.println ("===============================================");
+        
+         
+         }
+         }
+}
